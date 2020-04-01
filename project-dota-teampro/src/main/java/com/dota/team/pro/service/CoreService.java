@@ -91,7 +91,7 @@ public class CoreService {
 			SingleMatch singleMatch = response.getBody();
 			singleMatchRepository.save(singleMatch);
 			
-			TeamMatches teamMatch = teamMatchesRepository.findByMatchId(matchId)
+			TeamMatches teamMatch = teamMatchesRepository.findByMatchIdAndIsProcessed(matchId, false)
 														 .stream()
 														 .findFirst()
 														 .get();

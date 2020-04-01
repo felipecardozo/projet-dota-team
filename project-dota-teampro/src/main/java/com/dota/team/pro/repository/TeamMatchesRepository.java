@@ -13,6 +13,9 @@ public interface TeamMatchesRepository extends MongoRepository<TeamMatches, Stri
 	
 	public List<TeamMatches> findByMatchId(Long matchId);
 	
+	@Query( value="{ 'matchId' : ?0 , processed : ?1}")
+	public List<TeamMatches> findByMatchIdAndIsProcessed(Long matchId, Boolean isProcessed);
+	
 	@Query( value="{ 'teamId' : ?0 , processed : ?1}")
 	public List<TeamMatches> findByTeamIdAndByIsProcessed(Integer teamId, Boolean isProcessed);
 	
